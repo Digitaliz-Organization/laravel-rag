@@ -27,8 +27,7 @@ class ChatbotAI extends Command
      */
     public function handle()
     {
-        // $question = $this->ask('Ask me a question');
-        $question = "Who is Junaidi Abdul Rahman";
+        $question = $this->ask('Ask me a question');
 
         $embedQuestion = LlmDriverFacade::driver(config('llmdriver.driver'))
             ->embedData($question);
@@ -46,8 +45,6 @@ class ChatbotAI extends Command
         }
 
         $context = implode(' ', $content);
-        // $this->info($context);
-        // exit;
 
         $prompt = "
         **ROLE**
