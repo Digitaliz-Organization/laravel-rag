@@ -2,6 +2,8 @@
 
 Chat easily your documents with AI Chatbot, powered by Laravel RAG (Retrieval-Augmented Generation).
 
+Big Thanks to [Alfred Nutile](https://alnutile.medium.com/) was inspired us to build this things based on his articles in [Laravel RAG System in 4 Steps!](https://alnutile.medium.com/laravel-rag-in-4-steps-6264b4df173a).
+
 ## How to Install:
 
 ```
