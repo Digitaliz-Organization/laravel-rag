@@ -37,7 +37,7 @@ class ChunkFile extends Command
 
     private function pdf()
     {
-        $path = Storage::path("documents/2.pdf");
+        $path = public_path("documents/1.pdf");
 
         $parser = new \Smalot\PdfParser\Parser();
         $pdf = $parser->parseFile($path);
@@ -49,7 +49,7 @@ class ChunkFile extends Command
     private function excel()
     {
         // get path
-        $path = Storage::path("documents/rev-1.xlsx");
+        $path = public_path("documents/rev-1.xlsx");
 
         // Load the XLSX file
         $spreadsheet = IOFactory::load($path);
