@@ -19,6 +19,7 @@ class DistanceQuery
             ->orderBy('sort_order')
             ->orderBy('section_number')
             ->nearestNeighbors($embeddingSize, $embedding, Distance::Cosine)
+            ->where('id', '>', 5)
             ->get();
 
         $results = collect($query)
@@ -39,8 +40,8 @@ class DistanceQuery
                 $siblingsIncluded->push($result);
             } else {
                 if ($sibling = $this->getSiblingOrNot($result, $result->section_number - 1)) {
-
-                }     $siblingsIncluded->push($sibling);
+                }
+                $siblingsIncluded->push($sibling);
 
                 $siblingsIncluded->push($result);
             }

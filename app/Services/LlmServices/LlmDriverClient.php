@@ -33,6 +33,10 @@ class LlmDriverClient
                 return new ClaudeClient();
             case 'mock':
                 return new MockClient();
+            case 'deepseek':
+                return new MockClient();
+            case 'nazar-ai':
+                return new MockClient();
             default:
                 throw new \InvalidArgumentException("Driver [{$name}] is not supported.");
         }

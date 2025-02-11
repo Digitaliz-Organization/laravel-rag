@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.9",
         "openai-php/laravel": "^0.10.2",
         "pgvector/pgvector": "^0.2.1",
+        "phpoffice/phpspreadsheet": "^4.0",
         "probots-io/pinecone-php": "^1.1",
         "smalot/pdfparser": "^2.11",
         "spatie/laravel-data": "^4.13"

@@ -48,7 +48,7 @@ class ChatbotAI extends Command
 
         $prompt = "
         **ROLE**
-        Your role is as a Chatbot in a RAG (Retrieval augmented generation system) you will answer the question of the user without drifting from the context provided. If you do not have enough info for the question in the context please just say say
+        Your role is as a Chatbot in a RAG (Retrieval augmented generation system) you will answer the question of the user without drifting from the context provided. If you do not have enough info for the question in the context please just say i dunno.
 
         **TASK**
         Below is the INPUT of the user and the CONTEXT provided by the system that it found related to the users INPUT.
@@ -67,6 +67,7 @@ class ChatbotAI extends Command
         $results = LlmDriverFacade::driver(config('llmdriver.driver'))
             ->completion($prompt);
 
-        $this->info($results->content);
+        // $this->info("Context: " . $context);
+        $this->info("Results: " . $results->content);
     }
 }

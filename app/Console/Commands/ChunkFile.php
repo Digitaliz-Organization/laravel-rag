@@ -6,6 +6,7 @@ use App\Domains\Chunking\ChunkText;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ChunkFile extends Command
 {
@@ -28,18 +29,44 @@ class ChunkFile extends Command
      */
     public function handle()
     {
-        // ask name of file
-        // $file = Storage::get("documents/smaller_text.txt");
+        $text = $this->pdf();
+        (new ChunkText())->chunk($text);
 
-        // get path
-        $path = Storage::path("documents/1.pdf");
+        $this->info('File has been chunked');
+    }
+
+    private function pdf()
+    {
+        $path = Storage::path("documents/2.pdf");
 
         $parser = new \Smalot\PdfParser\Parser();
         $pdf = $parser->parseFile($path);
         $text = $pdf->getText();
 
-        (new ChunkText())->chunk($text);
+        return $text;
+    }
 
-        $this->info('File has been chunked');
+    private function excel()
+    {
+        // get path
+        $path = Storage::path("documents/rev-1.xlsx");
+
+        // Load the XLSX file
+        $spreadsheet = IOFactory::load($path);
+
+        // Convert the content to text
+        $text = '';
+        foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
+            foreach ($worksheet->getRowIterator() as $row) {
+                $cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(false);
+                foreach ($cellIterator as $cell) {
+                    $text .= $cell->getValue() . "\t";
+                }
+                $text .= "\n";
+            }
+        }
+
+        return $text;
     }
 }

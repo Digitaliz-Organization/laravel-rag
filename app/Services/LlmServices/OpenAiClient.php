@@ -150,9 +150,8 @@ class OpenAiClient extends BaseClient
         ]);
 
         return EmbeddingsResponseDto::from([
-            // 'token_count' => $response['usage']['total_tokens'],
             'embedding' => data_get($response['data'][0], 'embedding'),
-            'token_count' => 1000,
+            'token_count' => $response['usage']['total_tokens'],
         ]);
     }
 
