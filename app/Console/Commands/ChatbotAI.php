@@ -45,6 +45,7 @@ class ChatbotAI extends Command
         }
 
         $context = implode(' ', $content);
+        // $this->info("Context: " . $context);
 
         $prompt = "
         **ROLE**
@@ -67,7 +68,6 @@ class ChatbotAI extends Command
         $results = LlmDriverFacade::driver(config('llmdriver.driver'))
             ->completion($prompt);
 
-        // $this->info("Context: " . $context);
         $this->info("Results: " . $results->content);
     }
 }

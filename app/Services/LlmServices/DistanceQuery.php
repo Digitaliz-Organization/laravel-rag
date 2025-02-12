@@ -19,7 +19,6 @@ class DistanceQuery
             ->orderBy('sort_order')
             ->orderBy('section_number')
             ->nearestNeighbors($embeddingSize, $embedding, Distance::Cosine)
-            ->where('id', '>', 5)
             ->get();
 
         $results = collect($query)
