@@ -22,7 +22,7 @@ class ChatbotAI extends Command
      */
     protected $description = 'Command for chatbot AI';
 
-    /**
+    /** 
      * Execute the console command.
      */
     public function handle()
@@ -46,10 +46,11 @@ class ChatbotAI extends Command
 
         $context = implode(' ', $content);
         // $this->info("Context: " . $context);
+        // exit;
 
         $prompt = "
         **ROLE**
-        Your role is as a Chatbot in a RAG (Retrieval augmented generation system) you will answer the question of the user without drifting from the context provided. If you do not have enough info for the question in the context please just say i dunno.
+        Your role is as a Chatbot in a RAG (Retrieval augmented generation system) you will answer the question of the user without drifting from the context provided. If you do not have enough info for the question in the context please just say maaf saya tidak tahu.
 
         **TASK**
         Below is the INPUT of the user and the CONTEXT provided by the system that it found related to the users INPUT.

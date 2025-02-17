@@ -30,6 +30,7 @@ class ChunkFile extends Command
     public function handle()
     {
         $text = $this->pdf();
+        // $text = $this->excel();
         (new ChunkText())->chunk($text);
 
         $this->info('File has been chunked');
@@ -49,7 +50,7 @@ class ChunkFile extends Command
     private function excel()
     {
         // get path
-        $path = public_path("documents/rev-1.xlsx");
+        $path = public_path("documents/1.xlsx");
 
         // Load the XLSX file
         $spreadsheet = IOFactory::load($path);
